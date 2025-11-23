@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Movie Recap Hub</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;max-width:900px;margin:18px auto;padding:12px;}
+header{display:flex;justify-content:space-between;align-items:center;}
+h1{margin:0;}
+.search-box{margin:14px 0;}
+input[type=text]{width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px;}
+.card{border:1px solid #e0e0e0;padding:12px;border-radius:8px;background:#fafafa;}
+a.button{display:inline-block;padding:8px 12px;background:#0077cc;color:white;border-radius:6px;text-decoration:none;}
+.footer{margin-top:24px;color:#666;font-size:14px;}
+.post{border:1px dashed #ddd;padding:10px;border-radius:6px;margin-bottom:8px;}
+</style>
+<script>
+function searchItems() {
+  let q = document.getElementById('search').value.toLowerCase();
+  let items = document.getElementsByClassName('searchable');
+  for (let i=0;i<items.length;i++){
+    if(items[i].innerText.toLowerCase().includes(q)){
+      items[i].style.display=''
+    } else {
+      items[i].style.display='none'
+    }
+  }
+}
+</script>
+</head>
+<body>
+<header>
+  <h1>Movie Recap Hub</h1>
+  <a class="button" href="posts/index.html">New Post</a>
+</header>
+
+<div class="search-box">
+  <input id="search" type="text" placeholder="Search titles, topics, characters..." onkeyup="searchItems()">
+</div>
+
+<section>
+  <h2>Categories</h2>
+  <div class="grid">
+    <div class="card searchable"><a href="categories/romance.html">Romance Recaps</a><p class="meta">sweet, sad, love stories</p></div>
+    <div class="card searchable"><a href="categories/anime.html">Anime Recaps</a><p class="meta">anime movies & series</p></div>
+    <div class="card searchable"><a href="categories/horror.html">Horror Explanations</a><p class="meta">scary endings explained</p></div>
+    <div class="card searchable"><a href="music/index.html">Music</a><p class="meta">Background music & samples</p></div>
+  </div>
+</section>
+
+<section style="margin-top:18px;">
+  <h2>Latest Posts</h2>
+  <div id="posts">
+    <div class="post searchable"><strong>Example:</strong> How to write a short recap (5 step guide)</div>
+    <div class="post searchable"><strong>Example:</strong> Top 5 anime recaps students love</div>
+  </div>
+</section>
+
+<footer class="footer">
+  Tip: Upload images to /assets/images, videos to /assets/videos, mp3 to /music, and text posts to /posts folder.
+</footer>
+</body>
+      </html>
+      
