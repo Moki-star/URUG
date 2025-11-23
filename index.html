@@ -68,14 +68,17 @@
             background: #222;
             padding: 10px;
             border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
         }
+        .card:hover { transform: scale(1.05); }
         .card img {
             width: 100%;
             height: 220px;
             object-fit: cover;
             border-radius: 6px;
         }
-        .card-title { font-size: 16px; margin-top: 8px; }
+        .card-title { font-size: 16px; margin-top: 8px; text-align:center; }
 
         /* Footer */
         footer {
@@ -93,11 +96,11 @@
     <div class="navbar">
         <div><b>URUG Entertainment</b></div>
         <div>
-            <a href="#">Home</a>
-            <a href="#">Movies</a>
-            <a href="#">Music</a>
-            <a href="#">Recap</a>
-            <a href="#">Articles</a>
+            <a href="index.html">Home</a>
+            <a href="movies.html">Movies</a>
+            <a href="music.html">Music</a>
+            <a href="recap.html">Recap</a>
+            <a href="posts.html">Articles</a>
             <a href="#">About</a>
         </div>
     </div>
@@ -106,30 +109,30 @@
     <div class="hero">
         <h1>Welcome to URUG Entertainment</h1>
         <p>Movies • Music • Recap • Articles</p>
-        <button>Explore Now</button>
+        <button onclick="location.href='movies.html'">Explore Now</button>
     </div>
 
     <!-- MOVIES SECTION -->
     <div class="section">
         <h2>Latest Movies</h2>
         <div class="grid">
-            <div class="card">
-                <img src="https://i.imgur.com/4AiXzf8.jpeg">
+            <div class="card" onclick="location.href='movie_detail.html?id=1'">
+                <img src="https://i.imgur.com/4AiXzf8.jpeg" alt="Movie 1">
                 <div class="card-title">Movie 1</div>
             </div>
 
-            <div class="card">
-                <img src="https://i.imgur.com/4AiXzf8.jpeg">
+            <div class="card" onclick="location.href='movie_detail.html?id=2'">
+                <img src="https://i.imgur.com/4AiXzf8.jpeg" alt="Movie 2">
                 <div class="card-title">Movie 2</div>
             </div>
 
-            <div class="card">
-                <img src="https://i.imgur.com/4AiXzf8.jpeg">
+            <div class="card" onclick="location.href='movie_detail.html?id=3'">
+                <img src="https://i.imgur.com/4AiXzf8.jpeg" alt="Movie 3">
                 <div class="card-title">Movie 3</div>
             </div>
 
-            <div class="card">
-                <img src="https://i.imgur.com/4AiXzf8.jpeg">
+            <div class="card" onclick="location.href='movie_detail.html?id=4'">
+                <img src="https://i.imgur.com/4AiXzf8.jpeg" alt="Movie 4">
                 <div class="card-title">Movie 4</div>
             </div>
         </div>
@@ -141,4 +144,5 @@
     </footer>
 
 </body>
-</html>
+    </html>
+    
