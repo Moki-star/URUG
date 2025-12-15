@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music - StudyBreak</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Chill Music 🎧</h1>
+  <a href="index.html" class="back">⬅ Back Home</a>
+</header>
+
+<main class="music-page">
+  <div class="timer-box">
+    <p>Break Timer</p>
+    <div id="time">05:00</div>
+    <div class="timer-btns">
+      <button id="startTimer">Start</button>
+      <button id="resetTimer">Reset</button>
+    </div>
+  </div>
+
+  <div class="music-box">
+    <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4WYpdgoIcn6" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <p>Lofi Chill Playlist</p>
+  </div>
+</main>
+
+<script src="xp.js"></script>
+<script src="challenge.js"></script>
+<script>
+  const startBtn = document.getElementById("startTimer");
+  const resetBtn = document.getElementById("resetTimer");
+  const display = document.getElementById("time");
+  let timer;
+  let total = 300; // 5 minutes
+
+  function updateDisplay() {
+    const min = Math.floor(total / 60).toString().padStart(2,'0');
+    const sec = (total % 60).toString().padStart(2,'0');
+    display.textContent = `${min}:${sec}`;
+  }
+
+  startBtn.addEventListener("click", () => {
+    clearInterval(timer);
+    timer = setInterval(() => {
+      if(total > 0) {
+        total--;
+        updateDisplay();
+      } else {
+        clearInterval(timer);
+        addXP(10);
+        const status = getChallengeStatus();
+        status.timer = true;
+        saveChallenge(status);
+        checkComplete(status);
+        alert("Timer complete! +10 XP");
+      }
+    }, 1000);
+  });
+
+  resetBtn.addEventListener("click", () => {
+    clearInterval(timer);
+    total = 300;
+    updateDisplay();
+  });
+
+  updateDisplay();
+</script>
+
+</body>
+</html>
