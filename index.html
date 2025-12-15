@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyBreak</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>StudyBreak</h1>
+    <p>Study break made fun 🎮</p>
+  </header>
+
+  <div class="xp-box">
+    <p>XP: <span id="xp">0</span></p>
+    <p>Level: <span id="level">Newbie</span></p>
+  </div>
+
+  <main>
+    <section class="cards">
+      <a href="games.html" class="card">🎮 Play Games</a>
+      <a href="videos.html" class="card">🎥 Fun Videos</a>
+      <a href="music.html" class="card">🎧 Chill Music</a>
+    </section>
+
+    <section class="challenge">
+      <h3>🔥 Daily Challenge</h3>
+      <ul>
+        <li id="c-game">🎮 Play a game</li>
+        <li id="c-video">🎥 Watch a video</li>
+        <li id="c-timer">🎧 Use break timer</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 StudyBreak | Student Friendly</p>
+  </footer>
+
+  <!-- JS Files -->
+  <script src="xp.js"></script>
+  <script src="challenge.js"></script>
+
+  <!-- Inline Script: XP, Level & Challenge Update -->
+  <script>
+    // Daily visit XP
+    const today = new Date().toDateString();
+    const lastVisit = localStorage.getItem("lastVisit");
+    if (lastVisit !== today) {
+      addXP(5);
+      localStorage.setItem("lastVisit", today);
+    }
+
+    // Update XP & Level display
+    document.getElementById("xp").textContent = xp;
+    document.getElementById("level").textContent = getLevel();
+
+    // Daily Challenge status
+    const status = getChallengeStatus();
+    if (status.game) document.getElementById("c-game").style.opacity = 0.5;
+    if (status.video) document.getElementById("c-video").style.opacity = 0.5;
+    if (status.timer) document.getElementById("c-timer").style.opacity = 0.5;
+  </script>
+
+</body>
+</html>
