@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Videos - StudyBreak</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Fun Videos 🎥</h1>
+  <a href="index.html" class="back">⬅ Back Home</a>
+</header>
+
+<main class="video-page">
+  <div class="videos">
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+      <p>Fun Video 1</p>
+    </div>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/9bZkp7q19f0" allowfullscreen></iframe>
+      <p>Fun Video 2</p>
+    </div>
+  </div>
+</main>
+
+<script src="xp.js"></script>
+<script src="challenge.js"></script>
+<script>
+  // Update XP for watching video
+  const status = getChallengeStatus();
+  status.video = true;
+  saveChallenge(status);
+  checkComplete(status);
+</script>
+
+</body>
+</html>
