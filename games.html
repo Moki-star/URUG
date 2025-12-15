@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games - StudyBreak</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Games 🎮</h1>
+  <a href="index.html" class="back">⬅ Back Home</a>
+</header>
+
+<main class="game-box">
+  <div class="screen" id="gameScreen">Press Start!</div>
+  <button id="startBtn">Start Game</button>
+  <p id="result"></p>
+</main>
+
+<script src="xp.js"></script>
+<script src="challenge.js"></script>
+<script>
+  const startBtn = document.getElementById("startBtn");
+  const screen = document.getElementById("gameScreen");
+  const result = document.getElementById("result");
+
+  startBtn.addEventListener("click", () => {
+    startBtn.disabled = true;
+    screen.textContent = "Get Ready...";
+    setTimeout(() => {
+      screen.textContent = "Click NOW!";
+      const startTime = Date.now();
+
+      const handleClick = () => {
+        const reaction = Date.now() - startTime;
+        result.textContent = `Your reaction: ${reaction} ms`;
+        addXP(10); // XP for playing
+        const status = getChallengeStatus();
+        status.game = true;
+        saveChallenge(status);
+        checkComplete(status);
+        startBtn.disabled = false;
+        screen.removeEventListener("click", handleClick);
+      };
+
+      screen.addEventListener("click", handleClick);
+    }, Math.random() * 2000 + 1000);
+  });
+</script>
+
+</body>
+</html>
